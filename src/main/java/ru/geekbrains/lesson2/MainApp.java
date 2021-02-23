@@ -63,7 +63,7 @@ public class MainApp {
             if (idxCenter < i) rightSum += inArray[i];
             else leftSum += inArray[i];
         }
-        System.out.println("6. ->Iteration:" + (idxCenter + 1) + " Number: " + inArray[idxCenter] + "; leftSum->" + leftSum + (leftSum == rightSum ? " || " : " : ") + rightSum + "<- rightSum");
+        System.out.println("6. ->Iteration:" + (idxCenter + 1) + " Number: " + inArray[idxCenter] + "; leftSum ->" + leftSum + (leftSum == rightSum ? " || " : " : ") + rightSum + "<- rightSum");
         if (leftSum == rightSum) return true;
         else return checkBalanceArray(++idxCenter, inArray);
     }
