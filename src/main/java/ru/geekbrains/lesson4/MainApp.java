@@ -13,43 +13,15 @@ public class MainApp {
     private static final String COMP_CELL = "\u001B[32m" + "0" + "\u001B[0m";
     private static final String GAMER_CELL = "\u001B[31m" + "X" + "\u001B[0m";
     private static String[][] WAR_MAP;
-
     private static enum varCheck {HORIZONT, VERTICAL, LEFT_DIAGONAL, RIGHT_DIAGONAL};
-
     private static enum whoRun {COMP, GAMER};
     private static Scanner scanner = new Scanner(System.in);
 
-    public static class CoordinatyMaxLine {
-        public String checker = "";
-        public String verify = "";
-        public int counterMax = 0;
-        public int[] beginPoint = new int[2];
-        public int[] endPoint = new int[2];
-
-        public CoordinatyMaxLine(String checker, String verify) {
-            this.checker = checker;
-            this.verify = verify;
-            this.counterMax = 0;
-            this.beginPoint[0] = -1;
-            this.beginPoint[1] = -1;
-            this.endPoint[0] = -1;
-            this.endPoint[1] = -1;
-        }
-
-        @Override
-        public String toString() {
-            return "CoordinatyMaxLine{" +
-                    " verify=" + verify +
-                    ", checker=" + checker +
-                    ", counterMax=" + counterMax +
-                    ", beginPoint=" + Arrays.toString(beginPoint) +
-                    ", endPoint=" + Arrays.toString(endPoint) +
-                    '}';
-        }
+    public static void main(String[] args) {
+        runGameKrestNull();
     }
 
-
-    public static void main(String[] args) {
+    public static void runGameKrestNull(){
         boolean notEndGame = true;
         System.out.println("Старт игры \"Крестики нолики\"");
         initGame();
