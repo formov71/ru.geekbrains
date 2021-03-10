@@ -14,13 +14,9 @@ public class MainApp {
     private static final String GAMER_CELL = "\u001B[31m" + "X" + "\u001B[0m";
     private static String[][] WAR_MAP;
 
-    private static enum varCheck {HORIZONT, VERTICAL, LEFT_DIAGONAL, RIGHT_DIAGONAL}
+    private static enum varCheck {HORIZONT, VERTICAL, LEFT_DIAGONAL, RIGHT_DIAGONAL};
 
-    ;
-
-    private static enum whoRun {COMP, GAMER}
-
-    ;
+    private static enum whoRun {COMP, GAMER};
     private static Scanner scanner = new Scanner(System.in);
 
     public static class CoordinatyMaxLine {
@@ -57,44 +53,6 @@ public class MainApp {
         boolean notEndGame = true;
         System.out.println("Старт игры \"Крестики нолики\"");
         initGame();
-
-//        WAR_MAP[2][3] = COMP_CELL;
-//        WAR_MAP[3][2] = COMP_CELL;
-//        WAR_MAP[4][1] = COMP_CELL;
-
-//        WAR_MAP[2][5] = COMP_CELL;
-//        //WAR_MAP[3][4] = COMP_CELL;
-//        WAR_MAP[4][3] = COMP_CELL;
-//
-//        WAR_MAP[5][7] = COMP_CELL;
-//
-//        WAR_MAP[1][1] = COMP_CELL;
-//        WAR_MAP[8][8] = COMP_CELL;
-//        WAR_MAP[9][9] = COMP_CELL;
-
-//        WAR_MAP[3][0] = COMP_CELL;
-//        WAR_MAP[4][0] = COMP_CELL;
-//
-//        WAR_MAP[1][1] = COMP_CELL;
-//        WAR_MAP[2][1] = COMP_CELL;
-//
-//        WAR_MAP[1][0] = COMP_CELL;
-//        WAR_MAP[1][1] = COMP_CELL;
-//        WAR_MAP[1][2] = COMP_CELL;
-//
-//        WAR_MAP[0][2] = COMP_CELL;
-//        WAR_MAP[2][2] = COMP_CELL;
-//
-//        WAR_MAP[2][0] = COMP_CELL;
-//        WAR_MAP[2][3] = COMP_CELL;
-//        WAR_MAP[3][3] = COMP_CELL;
-//        WAR_MAP[4][3] = COMP_CELL;
-
-//        printMap("COMP");
-//        checkRIGHT_DIAGONAL(COMP_CELL);
-//        checkHORIZONT(COMP_CELL);
-//        checkVERTICAL(COMP_CELL);
-//        checkLEFT_DIAGONAL(COMP_CELL);
 
         gameOver:
         do {
