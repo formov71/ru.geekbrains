@@ -13,15 +13,21 @@ public class MainApp {
     private static final String COMP_CELL = "\u001B[32m" + "0" + "\u001B[0m";
     private static final String GAMER_CELL = "\u001B[31m" + "X" + "\u001B[0m";
     private static String[][] WAR_MAP;
-    private static enum varCheck {HORIZONT, VERTICAL, LEFT_DIAGONAL, RIGHT_DIAGONAL};
-    private static enum whoRun {COMP, GAMER};
+    private static enum varCheck {HORIZONT, VERTICAL, LEFT_DIAGONAL, RIGHT_DIAGONAL}
+
+    ;
+
+    private static enum whoRun {COMP, GAMER}
+
+    ;
     private static Scanner scanner = new Scanner(System.in);
+    private static int[] coordinatyLastStepGamer = new int[2];
 
     public static void main(String[] args) {
         runGameKrestNull();
     }
 
-    public static void runGameKrestNull(){
+    public static void runGameKrestNull() {
         boolean notEndGame = true;
         System.out.println("Старт игры \"Крестики нолики\"");
         initGame();
@@ -71,6 +77,67 @@ public class MainApp {
     }
 
     public static void runComputer() {
+        iscustIntelectCompa();
+    }
+
+    public static void iscustIntelectCompa() {
+        if (coordinatyLastStepGamer.length == 0) randomCompRun();
+
+        System.out.println(Arrays.toString(coordinatyLastStepGamer));
+        int predX = -1;
+        int predY = -1;
+
+        int nextX = -1;
+        int nextY = -1;
+        int lastX = -1;
+        int lastY = -1;
+        if (coordinatyLastStepGamer[0] != 0) {
+            nextX = coordinatyLastStepGamer[0] - 1;
+        } else {
+            nextX = coordinatyLastStepGamer[0];
+        }
+        if (coordinatyLastStepGamer[1] != 0) {
+            nextY = coordinatyLastStepGamer[1] - 1;
+        } else {
+            nextY = coordinatyLastStepGamer[1];
+        }
+
+        if (coordinatyLastStepGamer[0] == SIZE_CUBE - 1) {
+            lastX = coordinatyLastStepGamer[0];
+        } else {
+            lastX = coordinatyLastStepGamer[0] + 1;
+        }
+        if (coordinatyLastStepGamer[1] == SIZE_CUBE - 1) {
+            lastY = coordinatyLastStepGamer[1];
+        } else {
+            lastY = coordinatyLastStepGamer[1] + 1;
+        }
+
+        found:
+        for (int incX = nextX; incX <= lastX; incX++) {
+            for (int incY = nextY; incY <= lastY; incY++) {
+                if (incX == coordinatyLastStepGamer[0] && incY == coordinatyLastStepGamer[1]) continue;
+                System.out.println("Value: " + WAR_MAP[incX][incY] + ": X:" + (incX + 1) + "; Y:" + (incY + 1));
+                if (WAR_MAP[incX][incY] == GAMER_CELL) {
+                    predX = incX;
+                    predY = incY;
+                    break found;
+                }
+            }
+        }
+
+//        System.out.println("Pred: " + WAR_MAP[predX][predY] + ": X:" + (predX+1) + "; Y:" + (predY+1) );
+        int xSledStep = (coordinatyLastStepGamer[0] - predX) + coordinatyLastStepGamer[0];
+        int ySledStep = coordinatyLastStepGamer[1] - predY + coordinatyLastStepGamer[1];
+
+        if (xSledStep < 0 || ySledStep < 0 || xSledStep >= SIZE_CUBE || ySledStep >= SIZE_CUBE) {
+            randomCompRun();
+        } else {
+            WAR_MAP[ySledStep][xSledStep] = COMP_CELL;
+        }
+    }
+
+    public static void randomCompRun() {
         boolean CellEmpty = true;
         do {
             int x = random.nextInt(SIZE_CUBE);
@@ -101,6 +168,8 @@ public class MainApp {
                         error = false;
                     }
                 }
+                coordinatyLastStepGamer[0] = x - 1;
+                coordinatyLastStepGamer[1] = y - 1;
             } else {
                 System.out.print("Введите координаты в формате x:y -> ");
             }
@@ -154,7 +223,7 @@ public class MainApp {
                     }
                 }
             } else {
-                for (int y = SIZE_CUBE + firstDiag + step; y-step > 0; y--) {
+                for (int y = SIZE_CUBE + firstDiag + step; y - step > 0; y--) {
                     int x = SIZE_CUBE - y + step;
                     if (WAR_MAP[y][x] == checker) {
                         countLine++;
