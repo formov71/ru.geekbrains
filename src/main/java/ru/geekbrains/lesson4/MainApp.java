@@ -13,13 +13,9 @@ public class MainApp {
     private static final String COMP_CELL = "\u001B[32m" + "0" + "\u001B[0m";
     private static final String GAMER_CELL = "\u001B[31m" + "X" + "\u001B[0m";
     private static String[][] WAR_MAP;
-    private static enum varCheck {HORIZONT, VERTICAL, LEFT_DIAGONAL, RIGHT_DIAGONAL}
+    private static enum varCheck {HORIZONT, VERTICAL, LEFT_DIAGONAL, RIGHT_DIAGONAL};
 
-    ;
-
-    private static enum whoRun {COMP, GAMER}
-
-    ;
+    private static enum whoRun {COMP, GAMER};
     private static Scanner scanner = new Scanner(System.in);
     private static int[] coordinatyLastStepGamer = new int[2];
 
